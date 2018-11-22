@@ -93,7 +93,7 @@ define(function () {
         if (e === target)
           a.push(i);
         return a;
-      }, []); // [0, 3, 5]
+      }, []); 
     }
   };
 });
