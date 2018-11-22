@@ -31,13 +31,13 @@ define(function () {
       return arr;
     },
 
-    append: function (arr, item) { 
+    append: function (arr, item) {
       arr.push(item);
       return arr;
     },
 
     truncate: function (arr) {
-      arr.splice(arr.length-1);
+      arr.splice(arr.length - 1);
       return arr;
     },
 
@@ -48,7 +48,8 @@ define(function () {
     },
 
     curtail: function (arr) {
-
+      arr.shift();
+      return arr;
     },
 
     concat: function (arr1, arr2) {
@@ -56,31 +57,43 @@ define(function () {
     },
 
     insert: function (arr, item, index) {
-
+      arr.splice(index, 0, item);
+      return arr;
     },
 
     count: function (arr, item) {
-      var res = 0; 
-          
-      for (let i = 0; i < arr.length; i++) 
-          if (item == arr[i]) 
-          res++; 
-            
-      return res; 
+      var res = 0;
+
+      for (let i = 0; i < arr.length; i++)
+        if (item == arr[i])
+          res++;
+
+      return res;
     },
 
     duplicates: function (arr) {
-
+      var sorted_arr = arr.slice().sort();
+      var results = [];
+      for (var i = 0; i < sorted_arr.length - 1; i++) {
+        if (sorted_arr[i + 1] == sorted_arr[i]) {
+          results.push(sorted_arr[i]);
+        }
+      }
+      return results;
     },
 
     square: function (arr) {
-      return arr.map(x=> {
+      return arr.map(x => {
         return Math.pow(x, 2);
       });
     },
 
     findAllOccurrences: function (arr, target) {
-
+      return arr.reduce(function (a, e, i) {
+        if (e === target)
+          a.push(i);
+        return a;
+      }, []); // [0, 3, 5]
     }
   };
 });
